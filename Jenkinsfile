@@ -5,12 +5,14 @@ pipeline {
     }
   }
   environment {
-    DOCKER_IMAGE_NAME = ''
-    DOCKER_HUB_ACCOUNT = ''
+    DOCKER_IMAGE_NAME = 'webtesting'
+    DOCKER_HUB_ACCOUNT = 'hhoover'
   }
  stages {
     stage('Clone Repository') {
+      steps {
         checkout scm
+      }
     }
     stage('Build Hugo Site') {
       steps {
