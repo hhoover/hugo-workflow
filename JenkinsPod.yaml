@@ -4,6 +4,10 @@ metadata:
   labels:
     some-label: jenkins-builder
 spec:
+  nodeSelector:
+    kubernetes.io/hostname: master
+  tolerations:
+  - key: "node-role.kubernetes.io/master"
   containers:
   - name: hugo
     image: hhoover/hugo:0.59.1
