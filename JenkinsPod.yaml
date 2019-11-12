@@ -36,7 +36,8 @@ spec:
     - mountPath: /var/run/docker.sock
       name: docker-sock
       readOnly: true
-    volumes:
-    - hostPath:
-      path: /var/run/docker.sock
-      type: Socket
+  volumes:
+  - hostPath:
+    path: /var/run/docker.sock
+    name: docker-sock
+    type: Socket
