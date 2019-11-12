@@ -11,16 +11,19 @@ spec:
   containers:
   - name: hugo
     image: hhoover/hugo:0.59.1
+    imagePullPolicy: Always
     command:
     - cat
     tty: true
   - name: kubectl
     image: hhoover/kubectl:1.16.2
+    imagePullPolicy: Always
     command:
     - cat
     tty: true
   - name: html-proofer
     image: hhoover/html-proofer:3.6.0
+    imagePullPolicy: Always
     command:
     - cat
     tty: true
