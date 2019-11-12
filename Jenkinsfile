@@ -57,18 +57,18 @@ pipeline {
       }
     }
   }
-  // stage('Deploy to Production') {
-  //   when { branch "master" }
-  //   steps {
-  //     container('kubectl') {
-  //         dir ("manifests/overlays/production") {
-  //             sh """
-  //                 kustomize edit set image ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER};
-  //                 kustomize build . | kubectl apply --record -f -
-  //                """
-  //         }
-  //     }
-  //   }
-  // }
+  stage('Deploy to Production') {
+    when { branch "master" }
+    steps {
+      container('kubectl') {
+          dir ("manifests/overlays/production") {
+              sh """
+                  kustomize edit set image ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER};
+                  kustomize build . | kubectl apply --record -f -
+                 """
+          }
+      }
+    }
+  }
    }
 }
