@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    some-label: jenkins-builder
+    component: jenkins-builder
 spec:
   nodeSelector:
     kubernetes.io/hostname: master
