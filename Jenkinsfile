@@ -1,4 +1,3 @@
-node ('jenkins-builder') {
 pipeline {
   agent {
     kubernetes {
@@ -72,5 +71,4 @@ pipeline {
   //   }
   // }
    }
- }
 }
