@@ -33,11 +33,9 @@ spec:
       - name: DOCKER_CONFIG
         value: "/tmp/"
     volumeMounts:
-    - mountPath: /var/run/docker.sock
-      name: docker-sock
-      readOnly: true
+    - name: dockersock
+      mountPath: "/var/run/docker.sock"
   volumes:
-  - hostPath:
-    path: /var/run/docker.sock
-    name: docker-sock
-    type: Socket
+  - name: dockersock
+    hostPath:
+      path: /var/run/docker.sock
