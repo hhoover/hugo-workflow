@@ -1,7 +1,7 @@
 - op: replace
   path: /spec/rules/0/http/paths
   value:
-    path: '/staging'
-    backend:
-      serviceName: website
-      servicePort: 80
+    - path: '/staging'
+      backend:
+        serviceName: website
+        servicePort: 80
