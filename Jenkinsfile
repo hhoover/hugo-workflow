@@ -50,7 +50,13 @@ pipeline {
       container('kubectl') {
           dir ("manifests/overlays/staging") {
               sh """
-                  kustomize edit set image ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} && kustomize build . | kubectl apply --record -f -
+                  cat >> kustomization.yaml << EOF
+                  images:
+                  - name: hugo
+                    newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
+                    newTag: ${env.BUILD_NUMBER}
+                  EOF
+                  kubectl -k apply --record -f -
                  """
           }
       }
@@ -62,7 +68,13 @@ pipeline {
       container('kubectl') {
           dir ("manifests/overlays/production") {
               sh """
-                  kustomize edit set image ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} && kustomize build . | kubectl apply --record -f -
+                  cat >> kustomization.yaml << EOF
+                  images:
+                  - name: hugo
+                    newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
+                    newTag: ${env.BUILD_NUMBER}
+                  EOF
+                  kubectl -k apply --record -f -
                  """
           }
       }
