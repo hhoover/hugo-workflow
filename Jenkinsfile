@@ -48,8 +48,8 @@ pipeline {
     when { not { branch "master" } }
     steps {
       container('kubectl') {
-          dir ("manifests/overlays/staging") {
-              writeFile file: "kustomization.yaml", text: """
+          dir ("manifests") {
+              writeFile file: "/overlays/staging/kustomization.yaml", text: """
               resources:
               - ../../base
               namespace: staging
@@ -66,7 +66,7 @@ pipeline {
                 newTag: "${env.BUILD_NUMBER}"
             """
 
-            sh ("kubectl apply -k .")
+            sh ("kubectl apply -k /overlays/staging")
           }
       }
     }
@@ -75,8 +75,8 @@ pipeline {
     when { branch "master" }
     steps {
       container('kubectl') {
-          dir ("manifests/overlays/production") {
-            writeFile file: "kustomization.yaml", text: """
+          dir ("manifests") {
+            writeFile file: "/overlays/production/kustomization.yaml", text: """
               resources:
               - ../../base
               namespace: production
@@ -93,7 +93,7 @@ pipeline {
                 newTag: "${env.BUILD_NUMBER}"
             """
 
-            sh ("kubectl apply -k .")
+            sh ("kubectl apply -k /overlays/production")
           }
       }
     }
