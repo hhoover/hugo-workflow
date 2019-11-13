@@ -49,15 +49,24 @@ pipeline {
     steps {
       container('kubectl') {
           dir ("manifests/overlays/staging") {
-              sh """
-                  cat >> kustomization.yaml << EOF
-                  images:
-                  - name: hugo
-                    newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
-                    newTag: ${env.BUILD_NUMBER}
-                  EOF
-                  kubectl -k apply --record -f -
-                 """
+              writeFile file: "kustomization.yaml", text: """
+              resources:
+              - ../../base
+              namespace: staging
+              patchesJson6902:
+              - target:
+                  group: extensions
+                  version: v1beta1
+                  kind: Ingress
+                  name: website
+                path: ingress_patch.yaml
+              images:
+              - name: hugo
+                newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
+                newTag: ${env.BUILD_NUMBER}
+            """
+
+            sh ("kubectl -k apply --record -f .")
           }
       }
     }
@@ -67,15 +76,24 @@ pipeline {
     steps {
       container('kubectl') {
           dir ("manifests/overlays/production") {
-              sh """
-                  cat >> kustomization.yaml <<EOF
-                  images:
-                  - name: hugo
-                    newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
-                    newTag: ${env.BUILD_NUMBER}
-                  EOF;
-                  kubectl -k apply --record -f -
-                 """
+            writeFile file: "kustomization.yaml", text: """
+              resources:
+              - ../../base
+              namespace: production
+              patchesJson6902:
+              - target:
+                  group: extensions
+                  version: v1beta1
+                  kind: Ingress
+                  name: website
+                path: ingress_patch.yaml
+              images:
+              - name: hugo
+                newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
+                newTag: ${env.BUILD_NUMBER}
+            """
+
+            sh ("kubectl -k apply --record -f .")
           }
       }
     }
