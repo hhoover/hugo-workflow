@@ -2,7 +2,6 @@ baseurl = "/"
 languageCode = "en-us"
 theme = "hugo-theme-terminal"
 paginate = 5
-canonifyURLs = "true"
 
 [params]
   contentTypeName = "post"
