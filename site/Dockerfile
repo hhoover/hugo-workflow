@@ -18,6 +18,6 @@ RUN wget --quiet https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERS
 
 RUN git clone https://github.com/${GITHUB_USERNAME}/${DOCKER_IMAGE_NAME}.git
 
-RUN hugo -s ${DOCKER_IMAGE_NAME}/site -d /usr/share/nginx/html/ --uglyURLs
+RUN hugo -s ${DOCKER_IMAGE_NAME}/site -d /usr/share/nginx/html/
 
 CMD nginx -g "daemon off;"
