@@ -50,7 +50,7 @@ pipeline {
       container('kubectl') {
           dir ("manifests") {
               writeFile file: "overlays/staging/kustomization.yaml", text: """
-              resources:
+              bases:
               - ../../base
               namespace: staging
               patchesJson6902:
@@ -77,7 +77,7 @@ pipeline {
       container('kubectl') {
           dir ("manifests") {
             writeFile file: "overlays/production/kustomization.yaml", text: """
-              resources:
+              bases:
               - ../../base
               namespace: production
               patchesJson6902:
