@@ -22,7 +22,6 @@ paginate = 5
 
     [languages.en.params.logo]
       logoText = "Container Workflows"
-      logoHomeLink = "/"
 
     [languages.en.menu]
       [[languages.en.menu.main]]
