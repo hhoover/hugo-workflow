@@ -6,22 +6,22 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 
 <!-- Theme CSS -->
-<link rel="stylesheet" href="{{ "assets/style.css" | relURL }}">
+<link rel="stylesheet" href="{{ "assets/style.css" | absURL }}">
 {{ if (ne $.Site.Params.ThemeColor "orange") }}
-  <link rel="stylesheet" href="{{ (printf "assets/%s.css" $.Site.Params.ThemeColor) | relURL }}">
+  <link rel="stylesheet" href="{{ (printf "assets/%s.css" $.Site.Params.ThemeColor) | absURL }}">
 {{ end }}
 
 <!-- Custom CSS to override theme properties (/static/style.css) -->
 {{ if (fileExists "static/style.css") -}}
-  <link rel="stylesheet" href="{{ "style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "style.css" | absURL }}">
 {{- end }}
 
 <!-- Icons -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "img/apple-touch-icon-144-precomposed.png" | relURL }}">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ "img/apple-touch-icon-144-precomposed.png" | absURL }}">
 {{ if isset $.Site.Params "favicon" }}
-<link rel="shortcut icon" href="{{ $.Site.Params.favicon | relURL }}">
+<link rel="shortcut icon" href="{{ $.Site.Params.favicon | absURL }}">
 {{ else }}
-<link rel="shortcut icon" href="{{ printf "img/favicon/%s.png" $.Site.Params.ThemeColor | relURL }}">
+<link rel="shortcut icon" href="{{ printf "img/favicon/%s.png" $.Site.Params.ThemeColor | absURL }}">
 {{ end }}
 
 <!-- Twitter Card -->
@@ -30,7 +30,7 @@
 <meta name="twitter:description" content="{{ if .IsHome }}{{ $.Site.Params.tagline }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
 <meta name="twitter:site" content="{{ $.Site.BaseURL }}" />
 <meta name="twitter:creator" content="{{ .Params.Author }}" />
-<meta name="twitter:image" content="{{ with .Params.Cover }}{{ . | relURL }}{{ end }}">
+<meta name="twitter:image" content="{{ with .Params.Cover }}{{ . | absURL }}{{ end }}">
 
 <!-- OG data -->
 <meta property="og:locale" content="{{ $.Site.Language.Lang }}" />
@@ -39,7 +39,7 @@
 <meta property="og:description" content="{{ if .IsHome }}{{ $.Site.Params.tagline }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:site_name" content="{{ .Title }}" />
-<meta property="og:image" content="{{ with .Params.Cover }}{{ . | relURL }}{{ end }}">
+<meta property="og:image" content="{{ with .Params.Cover }}{{ . | absURL }}{{ end }}">
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
 {{ range .Params.categories }}<meta property="article:section" content="{{ . }}" />{{ end }}
