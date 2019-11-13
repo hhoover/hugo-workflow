@@ -68,12 +68,12 @@ pipeline {
       container('kubectl') {
           dir ("manifests/overlays/production") {
               sh """
-                  cat >> kustomization.yaml << EOF
+                  cat >> kustomization.yaml <<EOF
                   images:
                   - name: hugo
                     newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
                     newTag: ${env.BUILD_NUMBER}
-                  EOF
+                  EOF;
                   kubectl -k apply --record -f -
                  """
           }
