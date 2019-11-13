@@ -90,7 +90,7 @@ pipeline {
               images:
               - name: hugo
                 newName: ${DOCKER_HUB_ACCOUNT}/${DOCKER_IMAGE_NAME}
-                newTag: ${env.BUILD_NUMBER}
+                newTag: "${env.BUILD_NUMBER}"
             """
 
             sh ("cat kustomization.yaml")
