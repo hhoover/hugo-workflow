@@ -66,7 +66,7 @@ pipeline {
                 newTag: ${env.BUILD_NUMBER}
             """
 
-            sh ("kubectl -k apply --record -f .")
+            sh ("kubectl apply -k .")
           }
       }
     }
@@ -93,7 +93,7 @@ pipeline {
                 newTag: ${env.BUILD_NUMBER}
             """
 
-            sh ("kubectl -k apply --record -f .")
+            sh ("kubectl apply -k .")
           }
       }
     }
