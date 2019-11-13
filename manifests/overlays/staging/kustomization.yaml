@@ -1,4 +1,4 @@
-resources:
+bases:
 - ../../base
 namespace: staging
 patchesJson6902:

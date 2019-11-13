@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: hugo
-        image: hhoover/hugo:0.59.1
+        image: hugo
         imagePullPolicy: Always
         ports:
         - containerPort: 80
