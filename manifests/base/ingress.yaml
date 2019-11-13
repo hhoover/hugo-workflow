@@ -9,7 +9,7 @@ spec:
   rules:
   - http:
       paths:
-      - path: /blog
+      - path: /blog/?(.*)
         backend:
           serviceName: website
           servicePort: 80
