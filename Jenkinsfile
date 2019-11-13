@@ -93,7 +93,8 @@ pipeline {
                 newTag: ${env.BUILD_NUMBER}
             """
 
-            sh ("kubectl apply -k .")
+            sh ("cat kustomization.yaml")
+            //sh ("kubectl apply -k .")
           }
       }
     }
