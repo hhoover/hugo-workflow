@@ -45,21 +45,11 @@ theme = "minimal"
     weight = 1
 
 [[menu.icon]]
-    url = "https://github.com/username/"
+    url = "https://github.com/vmware-tanzu/"
     name = "github"
     weight = 2
 
 [[menu.icon]]
-    url = "https://twitter.com/username/"
+    url = "https://twitter.com/vmware/"
     name = "twitter"
     weight = 3
-
-[[menu.icon]]
-    url = "https://www.linkedin.com/in/username/"
-    name = "linkedin"
-    weight = 4
-
-[[menu.icon]]
-    url = "https://www.stackoverflow.com/username/"
-    name = "stack-overflow"
-    weight = 5
