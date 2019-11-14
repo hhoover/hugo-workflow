@@ -6,7 +6,7 @@ theme = "minimal"
 [params]
     author = "VMware"
     description = "Personal blog theme powered by Hugo"
-    githubUsername = "#"
+    githubUsername = "vmware-tanzu"
     accent = "red"
     showBorder = true
     backgroundColor = "white"
